@@ -8,7 +8,7 @@ const Page3 = () => (
   <div>
     <h1>Page 3</h1>
     <React.Suspense fallback="Loading TypeScript App...">
-      <TypeScriptButton>Button from TS APP</TypeScriptButton>
+      <TypeScriptButton />
     </React.Suspense>
   </div>
 );

@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-const Button = () => <button>App 2 Button</button>;
+const Button = () => <button>TS APP BUTTON</button>;
 
 export default Button;

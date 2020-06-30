@@ -37,7 +37,7 @@ module.exports = {
         app_one: "app_one",
       },
       exposes: {
-        "./Button": "./src/Button",
+        Button: "./src/Button",
       },
       shared: ["react", "react-dom"],
     }),
