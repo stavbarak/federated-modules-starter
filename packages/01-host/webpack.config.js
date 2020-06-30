@@ -38,9 +38,9 @@ module.exports = {
       library: { type: "var", name: "app_one" },
       filename: "remoteEntry.js",
       remotes: {
-        app1: "app1",
         app_two: "app_two",
-        app_three: "app_three"
+        app_three: "app_three",
+        ts_components: "ts_components"
       },
       exposes: {
         'AppContainer':'./src/App'

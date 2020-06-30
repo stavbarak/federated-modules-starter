@@ -1,14 +1,16 @@
 import React from "react";
 
-const TypeScriptApp = React.lazy(() => import("app1/App"));
+const TypeScriptButton = React.lazy(() => import("ts_components/Button"));
 
-const Page2 = () => (
+console.log('TypeScriptButton', TypeScriptButton)
+
+const Page3 = () => (
   <div>
     <h1>Page 3</h1>
     <React.Suspense fallback="Loading TypeScript App...">
-      <TypeScriptApp />
+      <TypeScriptButton>Button from TS APP</TypeScriptButton>
     </React.Suspense>
   </div>
 );
 
-export default Page2;
+export default Page3;

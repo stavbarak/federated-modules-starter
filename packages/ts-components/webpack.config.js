@@ -30,9 +30,12 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "ts-components",
-      library: { type: "var", name: "ts-components" },
+      name: "ts_components",
+      library: { type: "var", name: "ts_components" },
       filename: "remoteEntry.js",
+      remotes: {
+        app_one: "app_one",
+      },
       exposes: {
         "./Button": "./src/Button",
       },
