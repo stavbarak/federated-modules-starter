@@ -1,3 +1,6 @@
+// import { TitleContextProvider } from "@shared-context/shared-library";
+
+
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 import AppBar from "@material-ui/core/AppBar";
@@ -38,8 +41,8 @@ function App({routes:Routes}) {
       <div className={classes.root}>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
-            <Typography variant="h6" noWrap>
-              Module Federation
+          <Typography variant="h6" noWrap>
+            Module Federation
             </Typography>
           </Toolbar>
         </AppBar>
@@ -52,5 +55,12 @@ function App({routes:Routes}) {
     </BrowserRouter>
   );
 }
+
+
+{/* <TitleContextProvider.Provider value="Module Federation">
+  <Typography variant="h6" noWrap>
+  {React.useContext(TitleContextProvider)}
+  </Typography>
+</TitleContextProvider.Provider>  */}
 
 export default App;
