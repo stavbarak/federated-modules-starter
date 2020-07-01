@@ -35,11 +35,11 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "app_one",
-      library: { type: "var", name: "app_one" },
+      name: "main_app",
+      library: { type: "var", name: "main_app" },
       filename: "remoteEntry.js",
       remotes: {
-        ts_components: "ts_components"
+        shared_components: "shared_components"
       },
       exposes: {
         'AppContainer':'./src/App'

@@ -1,6 +1,6 @@
 import React from "react";
 
-const TypeScriptButton = React.lazy(() => import('ts_components/Button'));
+const TypeScriptButton = React.lazy(() => import('shared_components/Button'));
 
 const Page1 = () => (
   <div>

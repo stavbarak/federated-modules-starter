@@ -1,6 +1,6 @@
 import React from "react";
 
-const TypeScriptDialog = React.lazy(() => import("ts_components/Dialog"));
+const TypeScriptDialog = React.lazy(() => import("shared_components/Dialog"));
 
 const Page2 = () => (
   <div>
