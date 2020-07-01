@@ -1,12 +1,12 @@
 import React from "react";
 
-const Button = React.lazy(() => import("app_three/Button"));
+const TypeScriptDialog = React.lazy(() => import("ts_components/Dialog"));
 
 const Page2 = () => (
   <div>
     <h1>Page 2</h1>
-    <React.Suspense fallback="Loading Styled Component Button...">
-      <Button>&#128133; Button</Button>
+    <React.Suspense fallback="Loading TypeScript Dialog...">
+      <TypeScriptDialog />
     </React.Suspense>
   </div>
 );

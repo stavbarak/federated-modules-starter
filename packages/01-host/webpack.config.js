@@ -38,8 +38,6 @@ module.exports = {
       library: { type: "var", name: "app_one" },
       filename: "remoteEntry.js",
       remotes: {
-        app_two: "app_two",
-        app_three: "app_three",
         ts_components: "ts_components"
       },
       exposes: {

@@ -4,10 +4,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import React from "react";
+import React, { useState } from "react";
 
 function DialogComponent() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,8 +26,7 @@ function DialogComponent() {
         <DialogTitle>Dialog Example</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            This is a dialog from the Material UI app rendered in a React{" "}
-            <code>Portal</code>.
+            This dialog came from ts-components app
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -37,7 +36,7 @@ function DialogComponent() {
             color="primary"
             autoFocus
           >
-            Woot
+            Close
           </Button>
         </DialogActions>
       </Dialog>

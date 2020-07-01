@@ -38,6 +38,7 @@ module.exports = {
       },
       exposes: {
         Button: "./src/Button",
+        Dialog: "./src/Dialog",
       },
       shared: ["react", "react-dom"],
     }),

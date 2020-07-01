@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
+
 import React from "react";
 
 const drawerWidth = 240;
@@ -19,7 +21,7 @@ const useStyles = makeStyles(theme =>
     drawerPaper: {
       width: drawerWidth
     },
-    toolbar: theme.mixins.toolbar
+    toolbar: {...theme.mixins.toolbar, backgroundColor: theme.palette.secondary.dark}
   })
 );
 
@@ -36,16 +38,14 @@ export default function SideNav() {
       anchor="left"
     >
       <div className={classes.toolbar} />
+      
       <Divider />
       <List>
         <ListItem button component={Link} to="/page1">
-          <ListItemText primary="Dialog" />
+          <ListItemText primary="Shared Button" />
         </ListItem>
         <ListItem button component={Link} to="/page2">
-          <ListItemText primary="Styled Components" />
-        </ListItem>
-        <ListItem button component={Link} to="/page3">
-          <ListItemText primary="Typescript React App" />
+          <ListItemText primary="Shared Dialog" />
         </ListItem>
       </List>
     </Drawer>
