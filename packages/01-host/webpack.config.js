@@ -17,19 +17,20 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".jsx", ".js", ".json"]
+    extensions: [".tsx", ".ts", ".js", ".json"]
   },
 
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: require.resolve("babel-loader"),
+        test: /\.tsx?$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
         options: {
-          presets: [require.resolve("@babel/preset-react")]
-        }
-      }
-    ]
+          presets: ["@babel/preset-react", "@babel/preset-typescript"],
+        },
+      },
+    ],
   },
 
   plugins: [
