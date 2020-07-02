@@ -1,49 +1,61 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
 const path = require("path");
+const {
+  StorybookWebpackFederationPlugin,
+} = require("storybook-webpack-federation-plugin");
 
 module.exports = {
-  entry: "./src/index",
+  cache: false,
+
   mode: "development",
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    port: 3004,
+  devtool: "source-map",
+
+  optimization: {
+    minimize: false,
   },
-  output: {
-    publicPath: "http://localhost:3004/",
-  },
+
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".jsx", ".js", ".json", ".tsx", ".ts"],
   },
+
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-        options: {
-          presets: ["@babel/preset-react", "@babel/preset-typescript"],
-        },
+        loader: require.resolve("babel-loader"),
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
+
+  output: {
+    // location of where the compiled Storybook lives
+    path: path.resolve(__dirname, "storybook-static/federation"),
+    // the url where Storybook will be accessible from
+    publicPath: "//localhost:3030/federation/",
+  },
+
   plugins: [
-    new ModuleFederationPlugin({
-      name: "shared_components",
-      library: { type: "var", name: "shared_components" },
-      filename: "remoteEntry.js",
-      remotes: {
-        main_app: "main_app",
+    new StorybookWebpackFederationPlugin({
+      name: "shared_components", // this will be used by the consuming federation host
+      files: {
+        // paths to the components
+        paths: ["./src/**/*.ts{,x}"],
       },
-      exposes: {
-        Button: "./src/Button",
-        Dialog: "./src/Dialog",
-      },
-      shared: ["react", "react-dom"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
     }),
   ],
 };

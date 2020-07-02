@@ -1,53 +1,53 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const {
+  StorybookWebpackFederationPlugin,
+} = require("storybook-webpack-federation-plugin");
+
+const path = require("path");
 
 module.exports = {
   entry: "./src/index",
-  cache: false,
-
-  mode: "development",
-  devtool: "source-map",
-
-  optimization: {
-    minimize: false
-  },
-
   output: {
-    publicPath: "http://localhost:3001/"
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+    chunkFilename: "[id].[chunkhash].js",
   },
-
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".json"]
+    extensions: [".jsx", ".js", ".json", ".ts", ".tsx"],
   },
-
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
+        test: /\.[jt]sx?$/,
+        loader: require.resolve("babel-loader"),
         options: {
-          presets: ["@babel/preset-react", "@babel/preset-typescript"],
+          presets: [require.resolve("@babel/preset-react")],
         },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
-
   plugins: [
-    new ModuleFederationPlugin({
-      name: "main_app",
-      library: { type: "var", name: "main_app" },
-      filename: "remoteEntry.js",
-      remotes: {
-        shared_components: "shared_components"
-      },
-      exposes: {
-        'AppContainer':'./src/App'
-      },
-      shared: ["react", "react-dom","react-router-dom"]
-    }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+    new StorybookWebpackFederationPlugin({
+      remotes: ["shared_components"],
+    }),
+  ],
 };
