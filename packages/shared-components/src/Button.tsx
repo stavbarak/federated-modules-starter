@@ -17,6 +17,6 @@ const Button = styled.button`
 
 
 
-const StyledButton = () => <Button>TS APP BUTTON</Button>;
+const StyledButton = () => <Button data-name="testable-button">TS APP BUTTON</Button>;
 
 export default StyledButton;

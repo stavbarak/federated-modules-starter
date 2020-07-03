@@ -7,7 +7,11 @@ const path = require("path");
 
 module.exports = {
   entry: "./src/index",
+  devServer: {
+    historyApiFallback: true
+},
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
     chunkFilename: "[id].[chunkhash].js",

@@ -5,7 +5,7 @@ const TypeScriptButton = React.lazy(() => import('shared_components/Button'));
 const Page1 = () => (
   <div>
     <h1>Page 1</h1>
-    <React.Suspense fallback="Loading TypeScript Button...">
+    <React.Suspense fallback="Loading Button...">
       <TypeScriptButton />
     </React.Suspense>
   </div>
