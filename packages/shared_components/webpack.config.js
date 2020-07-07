@@ -2,6 +2,8 @@ const path = require("path");
 const {
   StorybookWebpackFederationPlugin,
 } = require("storybook-webpack-federation-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
 
 module.exports = {
   cache: false,
@@ -56,6 +58,26 @@ module.exports = {
         // paths to the components
         paths: ["./src/**/*.ts{,x}"],
       },
+      shared: ["react", "react-dom","react-router-dom"]
     }),
+    // new ModuleFederationPlugin({
+    //   name: "shared_components",
+    //   library: { type: "var", name: "shared_components" },
+    //   filename: "remoteEntry.js",
+    //   exposes: {
+    //     Dialog: "./src/Dialog",
+    //     Button: "./src/Button"
+    //   },
+    //
+    //   shared: {
+    //     "react": {
+    //       singleton: true
+    //     },
+    //     "react-dom": "^16.12.0",
+    //     "@material-ui/core": {
+    //       singleton: true
+    //     }
+    //   }
+    // }),
   ],
 };

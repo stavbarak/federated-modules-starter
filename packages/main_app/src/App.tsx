@@ -17,7 +17,9 @@ const useStyles = makeStyles(theme =>
     },
     appBar: {
       width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth
+      marginLeft: drawerWidth,
+      backgroundColor: '#fff',
+      color: '#000'
     },
     toolbar: theme.mixins.toolbar,
     content: {
@@ -28,18 +30,17 @@ const useStyles = makeStyles(theme =>
   })
 );
 
+
 function App({routes:Routes}) {
   const classes = useStyles();
 
   return (
     <BrowserRouter>
-      <CssBaseline />
-      thanks zack!
       <div className={classes.root}>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
           <Typography variant="h6" noWrap>
-            Module Federation
+            Main App
             </Typography>
           </Toolbar>
         </AppBar>

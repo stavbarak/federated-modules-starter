@@ -15,13 +15,30 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme =>
   createStyles({
     drawer: {
-      width: drawerWidth,
-      flexShrink: 0
+          width: drawerWidth,
+          flexShrink: 0,
+          backgroundColor: '#fff'
     },
     drawerPaper: {
-      width: drawerWidth
+          width: drawerWidth,
+          backgroundColor: '#3493d1',
+          border: 'none'
     },
-    toolbar: {...theme.mixins.toolbar, backgroundColor: theme.palette.secondary.dark}
+    toolbar: {
+          ...theme.mixins.toolbar,
+          backgroundColor: '#fff',
+          color: '#000',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          paddingLeft: '22px',
+    },
+      logo: {
+          fontSize: '40px'
+    },
+    menuItem: {
+          color: '#fff',
+     }
   })
 );
 
@@ -37,15 +54,15 @@ export default function SideNav() {
       }}
       anchor="left"
     >
-      <div className={classes.toolbar} />
+        <div className={classes.toolbar}><span className={classes.logo}>LOGO</span></div>
       
       <Divider />
       <List>
         <ListItem button component={Link} to="/page1">
-          <ListItemText primary="Shared Button" />
+          <ListItemText className={classes.menuItem} primary="Shared Button" />
         </ListItem>
         <ListItem button component={Link} to="/page2">
-          <ListItemText primary="Shared Dialog" />
+          <ListItemText className={classes.menuItem} primary="Shared Dialog" />
         </ListItem>
       </List>
     </Drawer>

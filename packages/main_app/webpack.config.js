@@ -3,10 +3,14 @@ const {
   StorybookWebpackFederationPlugin,
 } = require("storybook-webpack-federation-plugin");
 
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
+
 const path = require("path");
 
 module.exports = {
   entry: "./src/index",
+  watch: true,
   devServer: {
     historyApiFallback: true
 },
@@ -52,6 +56,28 @@ module.exports = {
     }),
     new StorybookWebpackFederationPlugin({
       remotes: ["shared_components"],
+      shared: ["react", "react-dom","react-router-dom"]
     }),
+
+    // new ModuleFederationPlugin({
+    //   name: "main_app",
+    //   library: { type: "var", name: "main_app" },
+    //   filename: "remoteEntry.js",
+    //   remotes: {
+    //     shared_components: "shared_components",
+    //   },
+    //   exposes: {
+    //     'AppContainer':'./src/App'
+    //   },
+    //   shared: {
+    //     "react": {
+    //       singleton: true
+    //     },
+    //     "react-dom": "^16.12.0",
+    //     "@material-ui/core": {
+    //       singleton: true
+    //     }
+    //   }
+    // }),
   ],
 };

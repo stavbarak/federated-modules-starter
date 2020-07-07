@@ -26,7 +26,7 @@ function DialogComponent() {
         <DialogTitle>Dialog Example</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            This dialog came from ts-components app
+            Local Dialog
           </DialogContentText>
         </DialogContent>
         <DialogActions>

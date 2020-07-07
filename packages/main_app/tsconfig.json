@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"],
+}
+
+//{
+//  "compilerOptions": {
+//    "skipLibCheck": true,
+//    "allowJs": true,
+//    "declaration": true,
+//    "checkJs": false,
+//    "sourceMap": true,
+//    "strict": true,
+//    "allowSyntheticDefaultImports": true,
+//    "module": "commonjs",
+//    "moduleResolution": "node",
+//    "esModuleInterop": true,
+//    "target": "esnext",
+//    "importHelpers": true,
+//    "resolveJsonModule": true,
+//    "jsx": "preserve",
+//    "lib": ["dom", "esnext"],
+//    "baseUrl": "."
+//  }
+//}
